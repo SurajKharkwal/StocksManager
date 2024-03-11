@@ -1,69 +1,49 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-	name: "Next.js + NextUI",
-	description: "Make beautiful websites regardless of your design experience.",
-	navItems: [
-		{
-			label: "Home",
-			href: "/",
-		},
+  name: "Stock-manager",
+  description: "A website that aims to automate stoks of any shop .",
+  navItems: [
     {
-      label: "Docs",
-      href: "/docs",
+      label: "Dashboard",
+      href: "/manager/dashboard",
     },
     {
-      label: "Pricing",
-      href: "/pricing",
+      label: "Inventory",
+      href: "/manager/inventory",
     },
     {
-      label: "Blog",
-      href: "/blog",
+      label: "Gen-Barcode",
+      href: "/manager/gen-barcode",
     },
     {
       label: "About",
       href: "/about",
-    }
-	],
-	navMenuItems: [
-		{
-			label: "Profile",
-			href: "/profile",
-		},
-		{
-			label: "Dashboard",
-			href: "/dashboard",
-		},
-		{
-			label: "Projects",
-			href: "/projects",
-		},
-		{
-			label: "Team",
-			href: "/team",
-		},
-		{
-			label: "Calendar",
-			href: "/calendar",
-		},
-		{
-			label: "Settings",
-			href: "/settings",
-		},
-		{
-			label: "Help & Feedback",
-			href: "/help-feedback",
-		},
-		{
-			label: "Logout",
-			href: "/logout",
-		},
-	],
-	links: {
-		github: "https://github.com/nextui-org/nextui",
-		twitter: "https://twitter.com/getnextui",
-		docs: "https://nextui.org",
-		discord: "https://discord.gg/9b6yyZKmH4",
-    sponsor: "https://patreon.com/jrgarciadev"
-	},
+    },
+  ],
+  navMenuItems: [
+    {
+      label: "Dashboard",
+      href: "/manager/dashboard",
+    },
+    {
+      label: "Inventory",
+      href: "/manager/inventory",
+    },
+    {
+      label: "Gen-Barcode",
+      href: "/manager/gen-barcode",
+    },
+    {
+      label: "About",
+      href: "/about",
+    },
+  ],
+  links: {
+    github: "https://github.com/nextui-org/nextui",
+    twitter: "https://twitter.com/getnextui",
+    docs: "https://nextui.org",
+    discord: "https://discord.gg/9b6yyZKmH4",
+    sponsor: "https://patreon.com/jrgarciadev",
+  },
 };
