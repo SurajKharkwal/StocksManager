@@ -3,7 +3,7 @@ import React from "react";
 
 const Amount = () => {
   return (
-    <Card className="p-4 flex items-center gap-4 aspect-square justify-center">
+    <Card className="p-4 flex w-[375px] items-center gap-4 aspect-square justify-center">
       <div className="w-full text-xl">
         <h1>Net-Amount</h1>
       </div>

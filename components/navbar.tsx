@@ -23,9 +23,19 @@ import { Avatar } from "@nextui-org/react";
 import { usePathname } from "next/navigation";
 import { UserButton } from "@clerk/nextjs";
 import { Button } from "@tremor/react";
+import { dark } from "@clerk/themes";
+import { useTheme } from "next-themes";
 
 export const Navbar = () => {
   const currrentPath = usePathname();
+  const { theme } = useTheme();
+  if (
+    currrentPath === "/salesmen" ||
+    currrentPath === "/sign-in" ||
+    currrentPath === "/sign-up"
+  ) {
+    return null;
+  }
 
   return (
     <NextUINavbar maxWidth="xl" position="sticky">
@@ -72,8 +82,11 @@ export const Navbar = () => {
           </Link>
           <ThemeSwitch />
         </NavbarItem>
-
-        <UserButton />
+        {theme === "dark" ? (
+          <UserButton appearance={{ baseTheme: dark }} />
+        ) : (
+          <UserButton />
+        )}
 
         {/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}
         {/* <NavbarItem className="hidden md:flex">
@@ -112,7 +125,7 @@ export const Navbar = () => {
                     ? "danger"
                     : "foreground"
                 }
-                href="#"
+                href={item.href}
                 size="lg"
               >
                 {item.label}

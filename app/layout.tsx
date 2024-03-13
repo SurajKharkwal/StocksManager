@@ -5,6 +5,7 @@ import { Providers } from "./providers";
 import { Navbar } from "@/components/navbar";
 import clsx from "clsx";
 import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 
 export const metadata: Metadata = {
   title: {
@@ -36,7 +37,9 @@ export default function RootLayout({
           <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
             <div className="relative flex flex-col min-h-[100dvh]">
               <Navbar />
-              <main className="md:pl-40 md:pr-40">{children}</main>
+              <main className="w-full h-full"> 
+                {children}
+              </main>
               {/* <footer className="w-full flex fixed bottom-0 flex-col items-center justify-center py-3">
 							<h6>created by</h6>
 							<h6 className="text-blue-500">FlyingHawk</h6>

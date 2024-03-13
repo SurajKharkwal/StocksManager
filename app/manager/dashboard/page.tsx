@@ -10,8 +10,8 @@ import StocksInOutCard from "@/components/manager/dashboard/StocksInOutCard";
 
 const page = () => {
   return (
-    <div className="max-md:p-2">
-      <div className="w-full max-md:flex-col flex gap-2 max-md:p-4 md:p-16 ">
+    <div className="max-md:p-2 flex items-center justify-center flex-col">
+      <div className="w-full max-md:flex-col flex gap-2 p-10 md:pb-16 ">
         <section className=" mr-auto">
           <h1 className="font-semibold">Welcome back, {"Suraj Kharkwal !"}</h1>
           <p className="font-extralight text-gray-400">
@@ -22,17 +22,18 @@ const page = () => {
           <DropDownUI />
         </section>
       </div>
-
-      <div className=" max-md:flex-col justify-evenly gap-20 flex ">
-        <div className=" flex flex-col gap-20">
-          <DonutChartUi />
-          <StocksInOutCard />
+      <div className="grid 2xl:grid-cols-[3fr_1fr]  lg:max-2xl:gap-20 w-full justify-evenly ">
+        <div className="flex items-center justify-center max-lg:flex-col gap-20 ">
+          <div className="flex flex-col md:max-lg:flex-row items-center justify-center gap-20">
+            <DonutChartUi />
+            <StocksInOutCard />
+          </div>
+          <div className="flex items-center flex-col justify-center gap-20">
+            <ProfitLossCard />
+            <AreaChartUsageExample />
+          </div>
         </div>
-        <div className="flex flex-col gap-20">
-          <ProfitLossCard />
-          <AreaChartUsageExample />
-        </div>
-        <div className="space-y-4">
+        <div className=" lg:flex-row lg:gap-10 gap-2 items-start md:max-lg:p-2 max-lg:flex-col md:max-lg:flex-row w-full 2xl:flex-col flex  justify-evenly ">
           <BarcodeList />
           <Amount />
         </div>

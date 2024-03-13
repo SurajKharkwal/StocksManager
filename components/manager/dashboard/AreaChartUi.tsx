@@ -71,7 +71,7 @@ const valueFormatter = function (number: number | bigint) {
 
 export function AreaChartUsageExample() {
   return (
-    <Card className='w-full h-full shadow-lg rounded-3xl p-8'>
+    <Card className='w-full h-auto shadow-lg rounded-3xl p-8'>
       <h3 className="text-tremor-defaul dark:text-white">Newsletter Revenue</h3>
       <p className="text-tremor-metric dark:text-white font-semibold">$34,567</p>
       <AreaChart
