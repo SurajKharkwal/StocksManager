@@ -21,6 +21,8 @@ import { TwitterIcon, GithubIcon, DiscordIcon } from "@/components/icons";
 
 import { Avatar } from "@nextui-org/react";
 import { usePathname } from "next/navigation";
+import { UserButton } from "@clerk/nextjs";
+import { Button } from "@tremor/react";
 
 export const Navbar = () => {
   const currrentPath = usePathname();
@@ -71,10 +73,8 @@ export const Navbar = () => {
           <ThemeSwitch />
         </NavbarItem>
 
-        <Avatar
-          size="sm"
-          src="https://i.pravatar.cc/150?u=a04258114e29026302d"
-        />
+        <UserButton />
+
         {/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}
         {/* <NavbarItem className="hidden md:flex">
 					<Button
@@ -91,10 +91,11 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal href={siteConfig.links.github} aria-label="Github">
-          <GithubIcon className="text-default-500" />
-        </Link>
         <ThemeSwitch />
+        <UserButton />
+        {/* <Link isExternal href={siteConfig.links.github} aria-label="Github">
+          <GithubIcon className="text-default-500" />
+        </Link> */}
         <NavbarMenuToggle />
       </NavbarContent>
 

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.29.9",
     "@headlessui/react": "^1.7.18",
     "@headlessui/tailwindcss": "^0.2.0",
     "@nextui-org/button": "2.0.26",
@@ -29,6 +30,7 @@
     "@types/node": "20.5.7",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
+    "@vercel/postgres": "^0.7.2",
     "autoprefixer": "10.4.16",
     "clsx": "^2.0.0",
     "eslint": "8.48.0",
@@ -45,9 +47,12 @@
     "react-zxing": "^2.0.0",
     "tailwind-variants": "^0.1.18",
     "tailwindcss": "^3.4.1",
-    "typescript": "5.0.4"
+    "typegraphql-prisma": "^0.27.2"
   },
   "devDependencies": {
-    "@tailwindcss/forms": "^0.5.7"
+    "@prisma/client": "^5.11.0",
+    "@tailwindcss/forms": "^0.5.7",
+    "prisma": "^5.11.0",
+    "typescript": "^5.4.2"
   }
 }

@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+enum Role {
+  Basic
+  Admin
+}
+
+model User {
+  id          Int       @id @default(autoincrement())
+  username    String
+  role        Role      @default(Basic)
+  avatarUrl   String
+  userId      String    @unique
+  email       String    @unique
+  inventoryId String    @unique @default(uuid())
+  Stocks      Stocks[]
+  Barcode     Barcode[]
+}
+
+model Barcode {
+  id           Int      @id @default(autoincrement())
+  userid       User     @relation(fields: [userId], references: [userId])
+  userId       String
+  name         String   @db.VarChar(255)
+  sellingPrice Decimal  @db.Decimal(10, 2)
+  barcode      Int      @unique
+  costPrice    Decimal  @db.Decimal(10, 2)
+  quantity     Int      @default(1)
+  size         String   @db.VarChar(255)
+  Stocks       Stocks[]
+}
+
+model Stocks {
+  // id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [userId])
+  barcode   Barcode  @relation(fields: [Barcode], references: [barcode])
+  Barcode   Int
+  stocksIn  BigInt   @default(1)
+  stocksOut BigInt   @default(1)
+  date      DateTime @default(now()) @updatedAt
+  userId    String
+
+  @@id([Barcode, date])
+}
