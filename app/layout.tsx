@@ -4,8 +4,6 @@ import { siteConfig } from "@/config/site";
 import { Providers } from "./providers";
 import { Navbar } from "@/components/navbar";
 import clsx from "clsx";
-import { ClerkProvider } from "@clerk/nextjs";
-import { dark } from "@clerk/themes";
 
 export const metadata: Metadata = {
   title: {
@@ -30,7 +28,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <head />
         <body className={clsx("min-h-screen bg-background antialiased")}>
@@ -48,6 +45,5 @@ export default function RootLayout({
           </Providers>
         </body>
       </html>
-    </ClerkProvider>
   );
 }

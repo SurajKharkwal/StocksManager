@@ -9,15 +9,15 @@ datasource db {
 }
 
 enum Role {
-  Basic
-  Admin
+  Salesmen
+  SubManager
+  Manager
 }
 
 model User {
   id          Int       @id @default(autoincrement())
   username    String
-  role        Role      @default(Basic)
-  avatarUrl   String
+  role        Role      @default(Salesmen)
   userId      String    @unique
   email       String    @unique
   inventoryId String    @unique @default(uuid())
