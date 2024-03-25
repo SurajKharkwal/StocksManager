@@ -3,7 +3,6 @@ import JsBarcode from "jsbarcode";
 import React, { useEffect } from "react";
 import { Button } from "@nextui-org/react";
 import { FaDownload } from "react-icons/fa6";
-import MyForm from "@/components/manager/gen-barcode/InputForm";
 
 const Page = () => {
   useEffect(() => {

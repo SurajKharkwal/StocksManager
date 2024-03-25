@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Stock-manager",
+  name: "Stock-Manager",
   description: "A website that aims to automate stoks of any shop .",
   navItems: [
     {
