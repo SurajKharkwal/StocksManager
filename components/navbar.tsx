@@ -19,11 +19,7 @@ import clsx from "clsx";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { TwitterIcon, GithubIcon, DiscordIcon } from "@/components/icons";
 
-import { Avatar } from "@nextui-org/react";
 import { usePathname } from "next/navigation";
-import { UserButton } from "@clerk/nextjs";
-import { Button } from "@tremor/react";
-import { dark } from "@clerk/themes";
 import { useTheme } from "next-themes";
 
 export const Navbar = () => {
@@ -82,11 +78,6 @@ export const Navbar = () => {
           </Link>
           <ThemeSwitch />
         </NavbarItem>
-        {theme === "dark" ? (
-          <UserButton appearance={{ baseTheme: dark }} />
-        ) : (
-          <UserButton />
-        )}
 
         {/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}
         {/* <NavbarItem className="hidden md:flex">
@@ -105,7 +96,6 @@ export const Navbar = () => {
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
         <ThemeSwitch />
-        <UserButton />
         {/* <Link isExternal href={siteConfig.links.github} aria-label="Github">
           <GithubIcon className="text-default-500" />
         </Link> */}

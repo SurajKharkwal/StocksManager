@@ -91,7 +91,7 @@ const HeroTable = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center w-full h-[90dvh]">
+    <div className="flex items-center justify-center w-full h-[89dvh]">
       <Table className="max-w-screen-lg" aria-label="Example table with custom cells">
         <TableHeader columns={columns}>
           {(column) => (

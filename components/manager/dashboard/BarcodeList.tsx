@@ -10,7 +10,7 @@ import {
 
 const BarcodeList = () => {
   return (
-    <Card className=" max-md:w-sm w-[375px] shadow-lg">
+    <Card className=" max-md:w-sm flex items-center justify-center w-[375px] shadow-lg">
       <CardHeader className="justify-between">
         <div className="flex gap-5 flex-col">
           <h1>List of Barcode</h1>
