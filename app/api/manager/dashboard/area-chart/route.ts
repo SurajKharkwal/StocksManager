@@ -34,32 +34,30 @@ export async function GET() {
       0
     );
 
-   const data = await prisma.barcode.findMany({
-  where: {
-    userId: userId,
-    User_Barcode_inventoryIdToUser: {
-      inventoryId: inventoryId,
-    },
-  },
-  select: {
-    sellingPrice: true,
-    costPrice: true,
-    Stocks: {
+    const data = await prisma.barcode.findMany({
       where: {
-        date: {
-          gte: firstDayOfMonth.toISOString(),
-          lte: lastDayOfMonth.toISOString(),
-        },
+        userId: userId,
+        inventoryId: inventoryId,
       },
       select: {
-        date: true,
-        stocksIn: true,
-        stocksOut: true,
+        sellingPrice: true,
+        costPrice: true,
+        Stocks: {
+          where: {
+            date: {
+              gte: firstDayOfMonth.toISOString(),
+              lte: lastDayOfMonth.toISOString(),
+            },
+          },
+          select: {
+            date: true,
+            stocksIn: true,
+            stocksOut: true,
+          },
+        },
       },
-    },
-  },
-});
- console.log(data);
+    });
+    console.log(data);
     const formattedData = dataParser(data);
 
     return NextResponse.json(formattedData, { status: 200 });

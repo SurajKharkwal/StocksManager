@@ -51,6 +51,9 @@ const Scanner = () => {
                 }
             </div>
         )
+    else {
+        <div>Internal Server Error</div>
+        }
 
 }
 
