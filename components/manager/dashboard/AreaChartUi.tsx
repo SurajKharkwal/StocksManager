@@ -69,7 +69,7 @@ const valueFormatter = function (number: number | bigint) {
   return '$ ' + new Intl.NumberFormat('us').format(number).toString();
 };
 
-export function AreaChartUsageExample() {
+export function AreaChartUsage() {
   return (
     <Card className='w-full h-auto shadow-lg rounded-3xl p-8'>
       <h3 className="text-tremor-defaul dark:text-white">Newsletter Revenue</h3>

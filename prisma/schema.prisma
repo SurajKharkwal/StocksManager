@@ -24,8 +24,8 @@ model Barcode {
 }
 
 model Stocks {
-  stocksIn                      BigInt   @default(1)
-  stocksOut                     BigInt   @default(1)
+  stocksIn                      BigInt   @default(0)
+  stocksOut                     BigInt   @default(0)
   date                          DateTime @default(now()) @db.Date
   userId                        String
   inventoryId                   String

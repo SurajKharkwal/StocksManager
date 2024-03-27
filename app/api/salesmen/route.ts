@@ -22,7 +22,7 @@ export async function POST(req: Request) {
     });
     console.log(newStocks);
 
-    if (!newStocks) {
+    if (newStocks == null) {
       try {
         const newdata = await prisma.stocks.create({
           data: {
@@ -36,11 +36,12 @@ export async function POST(req: Request) {
         console.log(newdata);
         return NextResponse.json("ok");
       } catch (error) {
+        console.log(error)
         return NextResponse.json({ error: error }, { status: 403 });
       }
     }
     try {
-      await prisma.stocks.update({
+      const updateData = await prisma.stocks.update({
         where: {
           id: newStocks.id,
         },
@@ -49,7 +50,7 @@ export async function POST(req: Request) {
           stocksOut: BigInt(newStocks.stocksOut) + BigInt(stocksOut), // Convert to BigInt and perform operation
         },
       });
-    
+    console.log(updateData)
     } catch (error) {
       console.log(error)
       return NextResponse.json({ error: error }, { status: 403 });

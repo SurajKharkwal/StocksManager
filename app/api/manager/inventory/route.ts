@@ -67,6 +67,7 @@ const stocksParser = (readData: any) => {
             stocksIn: totalStocksIn,
             stocksOut: totalStocksOut
         };
-        entry.Stocks.push(rec);
+        entry.Stocks = rec;
     });
+    return readData;
 };
