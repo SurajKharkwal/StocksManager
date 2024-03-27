@@ -21,25 +21,26 @@ export async function POST(req: Request) {
     // const userId: any = cookieStore.get("userId") || "123456789";
 
     const inventoryId = String(
-      cookieStore.get("inventoryId") || "7521c698-6768-4d25-83d8-d9fa3cc8ed06"
+      cookieStore.get("inventoryId") || "39730d1c-bdc5-433c-a780-fecf82d08622"
     );
     const userId = String(cookieStore.get("userId") || "123456789");
     const newBarcode = genBarcode();
-    await prisma.barcode.create({
+    const barcode = await prisma.barcode.create({
       data: {
         barcode: newBarcode,
         costPrice: data.costPrice,
         sellingPrice: data.sellingPrice,
         name: data.name,
         size: data.size,
-        quantity: data.quantity,
+        quantity: Number(data.quantity),
         inventoryId: inventoryId,
         userId: userId,
       },
     });
-    return new NextResponse("barcode genrated", { status: 200 });
+    console.log(barcode);
+    return new NextResponse(newBarcode, { status: 200 });
   } catch (error) {
-    console.error("Error creating barcode:", error);
+    console.log("Error creating barcode:", error);
     return new NextResponse("Internal Server Error", { status: 403 });
   }
 }

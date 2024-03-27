@@ -12,9 +12,7 @@ export async function POST(req: Request) {
     //   cookieStore.get("inventoryId") || "7521c698-6768-4d25-83d8-d9fa3cc8ed06";
     // const userId: any = cookieStore.get("userId") || "123456789";
 
-    const inventoryId = String(
-      cookieStore.get("inventoryId") || "7521c698-6768-4d25-83d8-d9fa3cc8ed06"
-    );
+    const inventoryId = String(cookieStore.get("inventoryId") || "39730d1c-bdc5-433c-a780-fecf82d08622");
     const userId = String(cookieStore.get("userId") || "123456789");
     const newStocks = await prisma.stocks.findUnique({
       where: {
@@ -40,7 +38,7 @@ export async function POST(req: Request) {
         console.log(newdata);
         return NextResponse.json("ok");
       } catch (error) {
-        console.log(error)
+        console.log(error);
         return NextResponse.json({ error: error }, { status: 403 });
       }
     }
@@ -54,9 +52,9 @@ export async function POST(req: Request) {
           stocksOut: BigInt(newStocks.stocksOut) + BigInt(stocksOut), // Convert to BigInt and perform operation
         },
       });
-    console.log(updateData)
+      console.log(updateData);
     } catch (error) {
-      console.log(error)
+      console.log(error);
       return NextResponse.json({ error: error }, { status: 403 });
     }
 
