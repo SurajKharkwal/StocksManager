@@ -8,10 +8,14 @@ export async function POST(req: Request) {
   try {
     const { barcode, stocksIn, stocksOut } = await req.json();
     const cookieStore = cookies();
-    const inventoryId: any =
-      cookieStore.get("inventoryId") || "7521c698-6768-4d25-83d8-d9fa3cc8ed06";
-    const userId: any = cookieStore.get("userId") || "123456789";
+    // const inventoryId: any =
+    //   cookieStore.get("inventoryId") || "7521c698-6768-4d25-83d8-d9fa3cc8ed06";
+    // const userId: any = cookieStore.get("userId") || "123456789";
 
+    const inventoryId = String(
+      cookieStore.get("inventoryId") || "7521c698-6768-4d25-83d8-d9fa3cc8ed06"
+    );
+    const userId = String(cookieStore.get("userId") || "123456789");
     const newStocks = await prisma.stocks.findUnique({
       where: {
         barcode_date: {
