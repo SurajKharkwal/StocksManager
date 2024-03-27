@@ -22,7 +22,6 @@ const page = () => {
           <AreaChartUsage />
         </div>
         <div className="md:max-lg:space-y-20 max-sm:p-4 max-sm:space-y-12 md:max-lg:flex items-end pb-4 justify-center">
-          <Amount />
           <BarcodeList />
         </div>
       </div>
