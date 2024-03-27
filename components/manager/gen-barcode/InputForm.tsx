@@ -1,10 +1,10 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import React, { Suspense, useCallback, useState } from "react";
 import { Input, Button, Spacer } from "@nextui-org/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import axios from "axios";
 
-const MyForm: React.FC = () => {
+const MyFormWithSuspense = () => {
   const searchParams = useSearchParams();
   const [formData, setFormData] = useState({
     name: "",
@@ -14,7 +14,7 @@ const MyForm: React.FC = () => {
     size: "",
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessag] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
   const createQueryString = useCallback(
     (name: string, value: string) => {
@@ -36,7 +36,7 @@ const MyForm: React.FC = () => {
       !formData.quantity ||
       !formData.size
     ) {
-      setErrorMessag("Please Fill complete form ");
+      setErrorMessage("Please fill complete form.");
       return;
     } else {
       setIsLoading(true);
@@ -46,7 +46,6 @@ const MyForm: React.FC = () => {
       );
     }
     setIsLoading(false);
-    // Add your form submission logic here
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -152,6 +151,14 @@ const MyForm: React.FC = () => {
         </Button>
       </div>
     </form>
+  );
+};
+
+const MyForm = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <MyFormWithSuspense />
+    </Suspense>
   );
 };
 
