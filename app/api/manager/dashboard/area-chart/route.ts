@@ -37,9 +37,9 @@ export async function GET() {
     const data = await prisma.barcode.findMany({
       where: {
         userId: userId,
-        User_Barcode_inventoryIdToUser: {
-          inventoryId: inventoryId,
-        },
+        // User_Barcode_inventoryIdToUser: {
+        //   inventoryId: inventoryId,
+        // },
         // inventoryId: inventoryId,
       },
       select: {
