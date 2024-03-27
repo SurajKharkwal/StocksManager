@@ -8,45 +8,51 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-enum Role {
-  Salesmen
-  SubManager
-  Manager
-}
-
-model User {
-  id          Int       @id @default(autoincrement())
-  username    String
-  role        Role      @default(Salesmen)
-  userId      String    @unique
-  email       String    @unique
-  inventoryId String    @unique @default(uuid())
-  Stocks      Stocks[]
-  Barcode     Barcode[]
-}
-
 model Barcode {
-  id           Int      @id @default(autoincrement())
-  userid       User     @relation(fields: [userId], references: [userId])
-  userId       String
-  name         String   @db.VarChar(255)
-  sellingPrice Decimal  @db.Decimal(10, 2)
-  barcode      Int      @unique
-  costPrice    Decimal  @db.Decimal(10, 2)
-  quantity     Int      @default(1)
-  size         String   @db.VarChar(255)
-  Stocks       Stocks[]
+  id                             Int      @id @default(autoincrement())
+  userId                         String
+  name                           String   @db.VarChar(255)
+  sellingPrice                   Decimal  @db.Decimal(10, 2)
+  barcode                        String   @unique
+  costPrice                      Decimal  @db.Decimal(10, 2)
+  quantity                       Int      @default(1)
+  size                           String   @db.VarChar(255)
+  inventoryId                    String
+  User_Barcode_inventoryIdToUser User     @relation("Barcode_inventoryIdToUser", fields: [inventoryId], references: [inventoryId])
+  User_Barcode_userIdToUser      User     @relation("Barcode_userIdToUser", fields: [userId], references: [userId])
+  Stocks                         Stocks[]
 }
 
 model Stocks {
-  // id        Int      @id @default(autoincrement())
-  user      User     @relation(fields: [userId], references: [userId])
-  barcode   Barcode  @relation(fields: [Barcode], references: [barcode])
-  Barcode   Int
-  stocksIn  BigInt   @default(1)
-  stocksOut BigInt   @default(1)
-  date      DateTime @default(now()) @updatedAt
-  userId    String
+  stocksIn                      BigInt   @default(0)
+  stocksOut                     BigInt   @default(0)
+  date                          DateTime @default(now()) @db.Date
+  userId                        String
+  inventoryId                   String
+  id                            Int      @id @default(autoincrement())
+  barcode                       String
+  Barcode                       Barcode  @relation(fields: [barcode], references: [barcode])
+  User_Stocks_inventoryIdToUser User     @relation("Stocks_inventoryIdToUser", fields: [inventoryId], references: [inventoryId])
+  User_Stocks_userIdToUser      User     @relation("Stocks_userIdToUser", fields: [userId], references: [userId])
 
-  @@id([Barcode, date])
+  @@unique([barcode, date])
+}
+
+model User {
+  id                                Int       @id @default(autoincrement())
+  username                          String
+  role                              Role      @default(Basic)
+  userId                            String    @unique
+  email                             String    @unique
+  inventoryId                       String    @unique
+  avatarUrl                         String
+  Barcode_Barcode_inventoryIdToUser Barcode[] @relation("Barcode_inventoryIdToUser")
+  Barcode_Barcode_userIdToUser      Barcode[] @relation("Barcode_userIdToUser")
+  Stocks_Stocks_inventoryIdToUser   Stocks[]  @relation("Stocks_inventoryIdToUser")
+  Stocks_Stocks_userIdToUser        Stocks[]  @relation("Stocks_userIdToUser")
+}
+
+enum Role {
+  Basic
+  Admin
 }

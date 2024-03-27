@@ -6,37 +6,30 @@ import { FaArrowUpRightDots } from "react-icons/fa6";
 const ProfitLossCard = () => {
   const chartdata = [
     {
-      month: "Jan 21",
       Performance: 4000,
       Benchmark: 3000,
     },
     {
-      month: "Feb 21",
       Performance: 3000,
       Benchmark: 2000,
     },
     {
-      month: "Mar 21",
       Performance: 2000,
       Benchmark: 1700,
     },
     {
-      month: "Apr 21",
       Performance: 2780,
       Benchmark: 2500,
     },
     {
-      month: "May 21",
       Performance: 1890,
       Benchmark: 1890,
     },
     {
-      month: "Jun 21",
       Performance: 2390,
       Benchmark: 2000,
     },
     {
-      month: "Jul 21",
       Performance: 3490,
       Benchmark: 3000,
     },
@@ -80,7 +73,7 @@ const ProfitLossCard = () => {
             <SparkLineChart
               data={chartdata}
               index="date"
-              categories={["Performance"]}
+              categories={["Benchmark"]}
               colors={["red"]}
             />
             <div className="flex items-center justify-cente mt-2 text-red-500 font-extralight gap-2">
