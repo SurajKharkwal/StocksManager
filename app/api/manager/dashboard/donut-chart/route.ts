@@ -45,9 +45,12 @@ function calculateTotalStocks(rawData: FormatedRawData[]) {
 const prisma = new PrismaClient();
 
 export async function GET() {
+  // console.log("ok");
   try {
     const cookieStore = cookies();
-    const inventoryId = String(cookieStore.get("inventoryId") || "39730d1c-bdc5-433c-a780-fecf82d08622");
+    const inventoryId = String(
+      cookieStore.get("inventoryId") || "39730d1c-bdc5-433c-a780-fecf82d08622"
+    );
     const userId = String(cookieStore.get("userId") || "123456789");
     const today = new Date();
     const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
